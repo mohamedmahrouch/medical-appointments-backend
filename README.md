@@ -21,6 +21,11 @@
 </p>
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+### Frontend Application
+The frontend application for this project can be found in the following repository:
+- Repository: [medical-appointments-frontend](https://github.com/mohamedmahrouch/medical-appointments-frontend)
+
+This frontend application provides the user interface for the medical appointments system. Please refer to the frontend repository for setup instructions and more details.
 
 ## Description
 
@@ -153,13 +158,7 @@ The application implements several security features:
 - CORS protection
 - Request logging middleware
 
-## Related Applications
 
-### Frontend Application
-The frontend application for this project can be found in the following repository:
-- Repository: [medical-appointments-frontend](https://github.com/mohamedmahrouch/medical-appointments-frontend)
-
-This frontend application provides the user interface for the medical appointments system. Please refer to the frontend repository for setup instructions and more details.
 
 ## Contributing
 
