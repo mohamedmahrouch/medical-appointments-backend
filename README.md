@@ -24,13 +24,57 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This is a medical appointments management system backend built with NestJS. The system facilitates appointment scheduling between patients and doctors, with nurses managing the administrative aspects. Key features include:
 
-## Project setup
+- User Authentication and Authorization (JWT-based)
+  - Patient registration and login
+  - Doctor registration and login
+  - Nurse/Office staff registration and login
+  - Role-based access control
 
+- Appointment Management
+  - Create, read, update, and delete appointments
+  - Automatic email notifications for appointments
+  - View appointments by patient
+  - View appointments by doctor
+  - Status tracking (pending, confirmed, cancelled)
+
+- User Management
+  - Patient profiles with personal information
+  - Doctor profiles with photo upload capability
+  - Office staff management
+  
+- Email Notifications
+  - Appointment confirmation emails
+  - Updates and reminders
+  - Multi-recipient notifications (both patient and doctor)
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v18 or later recommended)
+- MySQL Server
+- npm or yarn
+
+## Project Setup
+
+1. Clone the repository:
+```bash
+$ git clone https://github.com/mohamedmahrouch/medical-appointments-backend.git
+$ cd medical-appointments-backend
+```
+
+2. Install dependencies:
 ```bash
 $ npm install
 ```
+
+3. Configure the database:
+- Create a MySQL database named `Rendez_vous_db`
+- Update the database configuration in `src/config/database.config.ts` if needed
+
+4. Configure email settings:
+- Update the email configuration in `src/email/email.service.ts` with your SMTP credentials
 
 ## Compile and run the project
 
@@ -58,31 +102,72 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Deployment
+## API Endpoints
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### Authentication
+- `POST /auth/register-patient` - Register a new patient
+- `POST /auth/login-patient` - Patient login
+- `POST /auth/register-medecin` - Register a new doctor
+- `POST /auth/login-medecin` - Doctor login
+- `POST /auth/register-infirmier` - Register a new nurse
+- `POST /auth/login-infirmier` - Nurse login
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+### Appointments
+- `GET /rendez-vous` - List all appointments
+- `GET /rendez-vous/:id` - Get appointment details
+- `POST /rendez-vous` - Create new appointment
+- `PUT /rendez-vous/:id` - Update appointment
+- `DELETE /rendez-vous/:id` - Delete appointment
+- `GET /rendez-vous/patient/:patientId` - Get patient's appointments
+- `GET /rendez-vous/medecin/:medecinId` - Get doctor's appointments
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+### Patients
+- `GET /patients` - List all patients
+- `GET /patients/:id` - Get patient details
+- `POST /patients` - Create patient profile
+- `PUT /patients/:id` - Update patient profile
+- `DELETE /patients/:id` - Delete patient profile
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### Doctors
+- `GET /medecin` - List all doctors
+- `GET /medecin/:id` - Get doctor details
+- `POST /medecin` - Create doctor profile
+- `PATCH /medecin/:id` - Update doctor profile
+- `DELETE /medecin/:id` - Delete doctor profile
+- `POST /medecin/:id/upload-photo` - Upload doctor's photo
 
-## Resources
+### Office Staff
+- `GET /infirmier-de-bureau` - List all office staff
+- `GET /infirmier-de-bureau/:id` - Get staff member details
+- `POST /infirmier-de-bureau` - Create staff profile
+- `PATCH /infirmier-de-bureau/:id` - Update staff profile
+- `DELETE /infirmier-de-bureau/:id` - Delete staff profile
 
-Check out a few resources that may come in handy when working with NestJS:
+## Security
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+The application implements several security features:
+- JWT-based authentication
+- Role-based access control
+- Password hashing using bcrypt
+- Input validation using class-validator
+- CORS protection
+- Request logging middleware
+
+## Related Applications
+
+### Frontend Application
+The frontend application for this project can be found in the following repository:
+- Repository: [medical-appointments-frontend](https://github.com/mohamedmahrouch/medical-appointments-frontend)
+
+This frontend application provides the user interface for the medical appointments system. Please refer to the frontend repository for setup instructions and more details.
+
+## Contributing
+
+Feel free to fork the repository and submit pull requests. For major changes, please open an issue first to discuss what you would like to change.
 
 
 
+## Author
+
+- Mohamed Mahrouch
+- GitHub: [@mohamedmahrouch](https://github.com/mohamedmahrouch) 
